@@ -3,7 +3,6 @@ paper: Self-Supervised Digital Twin Modeling of Tumor Microenvironment Dynamics 
 checks executed: 102
 PASS 96  FAIL 3  NOT_RUN 2  BLOCKED 1
 overall: PARTIALLY_VERIFIED
-elapsed: 25.1 s
 
 per area:
   MSI                    PASS   4  FAIL   0  NOT_RUN   0  BLOCKED   0

@@ -2959,7 +2959,6 @@ def render_summary(
     results: list[CheckResult],
     summary: dict[str, object],
     context: Context | None,
-    elapsed: float,
     status: str,
 ) -> str:
     lines = [
@@ -2968,7 +2967,6 @@ def render_summary(
         f"checks executed: {summary['total']}",
         f"PASS {summary['counts'][PASS]}  FAIL {summary['counts'][FAIL]}  NOT_RUN {summary['counts'][NOT_RUN]}  BLOCKED {summary['counts'][BLOCKED]}",
         f"overall: {status}",
-        f"elapsed: {elapsed:.1f} s",
         "",
         "per area:",
     ]
@@ -3130,7 +3128,7 @@ def write_artefacts(root: Path, scratch: Path | None = None) -> dict[str, object
     atomic_write_json(root / "verification_report.json", report_payload)
     atomic_write_text(
         root / "verification_summary.txt",
-        render_summary(results, summary, context, elapsed, status),
+        render_summary(results, summary, context, status),
     )
     manifest = build_integrity_manifest(root)
     atomic_write_json(root / "integrity_manifest.json", manifest)

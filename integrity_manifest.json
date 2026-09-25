@@ -615,8 +615,8 @@
     },
     {
       "path": "src/twindyn/verification.py",
-      "sha256": "7498c85a2ece88eab860d3abd5b06fe7f80a1146dc20985420dae0249b133a80",
-      "size": 128333
+      "sha256": "377ecde5d56b2aef06e314c2f527b5fda40ba41e290a053d09efeae417be99fb",
+      "size": 128267
     },
     {
       "path": "tests/conftest.py",
@@ -680,10 +680,10 @@
     },
     {
       "path": "verification_summary.txt",
-      "sha256": "0a23065257162255ab5bc5f62e3a9e7be6d2a2ec160d0d604d972918a56daf4d",
-      "size": 3728
+      "sha256": "f2fa6fc4631f7efc7218ac014625615433351d1f7d87c4a201f792b0c713e681",
+      "size": 3712
     }
   ],
-  "manifest_digest": "7a211dec5d5ec027d195eee4abb1a69438ca4214a2373430e9c93b2aa2b18885",
+  "manifest_digest": "abc2977e9fe343c76b3e4ce7a30881b31cbfb5de8487a23aca0199f0c6e4f5b5",
   "root": "."
 }
