@@ -1,0 +1,8 @@
+# Ablation variant, evaluated on the mean external concordance as reported in Table 2.
+experiment: ablation_no_reconstruction
+variant: minus_masked_reconstruction
+output_dir: runs/ablation_no_reconstruction
+
+evaluation:
+  initialisations: 10
+  bootstrap_resamples: 1000

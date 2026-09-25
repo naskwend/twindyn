@@ -1,0 +1,8 @@
+# supplementary_strata_and_dropout
+# Stage and grade strata and the modality-dropout rows of Table 3.
+experiment: supplementary_strata_and_dropout
+variant: full
+output_dir: runs/supplementary_strata_and_dropout
+
+evaluation:
+  initialisations: 10

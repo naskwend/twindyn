@@ -1,0 +1,10 @@
+# supplementary_state_dimension_sweep
+# State dimension swept over 16/32/64/128 around the selected 64 (Table 4).
+experiment: supplementary_state_dimension_sweep
+variant: full
+output_dir: runs/supplementary_state_dimension_sweep
+
+model:
+  state_dim: 64
+evaluation:
+  initialisations: 10

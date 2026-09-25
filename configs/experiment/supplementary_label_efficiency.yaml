@@ -1,0 +1,9 @@
+# supplementary_label_efficiency
+# The constraint-axis arm: the read-out is fitted on 10, 25, 50 and 100 percent of the labels.
+experiment: supplementary_label_efficiency
+variant: full
+output_dir: runs/supplementary_label_efficiency
+
+evaluation:
+  initialisations: 10
+  label_fractions: [0.10, 0.25, 0.50, 1.00]

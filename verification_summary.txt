@@ -1,0 +1,46 @@
+TwinDyn label-free microenvironment digital twin: verification summary
+paper: Self-Supervised Digital Twin Modeling of Tumor Microenvironment Dynamics for Survival Prognosis in Kidney Cancer
+checks executed: 102
+PASS 96  FAIL 3  NOT_RUN 2  BLOCKED 1
+overall: PARTIALLY_VERIFIED
+elapsed: 25.1 s
+
+per area:
+  MSI                    PASS   4  FAIL   0  NOT_RUN   0  BLOCKED   0
+  SST                    PASS  10  FAIL   0  NOT_RUN   0  BLOCKED   0
+  axis                   PASS   6  FAIL   0  NOT_RUN   0  BLOCKED   0
+  checkpoints            PASS   4  FAIL   0  NOT_RUN   0  BLOCKED   0
+  comparison             PASS   1  FAIL   0  NOT_RUN   0  BLOCKED   0
+  data                   PASS   8  FAIL   0  NOT_RUN   0  BLOCKED   0
+  deconvolution          PASS   3  FAIL   0  NOT_RUN   0  BLOCKED   0
+  environment            PASS   2  FAIL   0  NOT_RUN   0  BLOCKED   0
+  external validation    PASS   0  FAIL   0  NOT_RUN   1  BLOCKED   0
+  feature space          PASS   2  FAIL   0  NOT_RUN   0  BLOCKED   0
+  losses                 PASS   8  FAIL   0  NOT_RUN   0  BLOCKED   0
+  masking                PASS   4  FAIL   0  NOT_RUN   0  BLOCKED   0
+  mechanism              PASS   3  FAIL   2  NOT_RUN   0  BLOCKED   0
+  metrics                PASS  14  FAIL   0  NOT_RUN   0  BLOCKED   0
+  model                  PASS   3  FAIL   0  NOT_RUN   0  BLOCKED   0
+  pairs                  PASS   5  FAIL   0  NOT_RUN   0  BLOCKED   0
+  reported tables        PASS   0  FAIL   0  NOT_RUN   1  BLOCKED   1
+  reported values        PASS   7  FAIL   1  NOT_RUN   0  BLOCKED   0
+  splits                 PASS   5  FAIL   0  NOT_RUN   0  BLOCKED   0
+  training               PASS   7  FAIL   0  NOT_RUN   0  BLOCKED   0
+
+failed checks:
+  reported-02: largest printed drop 0.041, smallest printed drop 0.002; the caption states a min drop of 0.003, which the smallest printed drop does not give (20.5 against the printed 13.7). The caption's min-drop figure does not match the smallest drop in its own table, so the arithmetic is recorded as inconsistent rather than silently reconciled.
+  mech-01: raw 0.6429, learned 0.7519, readability removed -0.1090 at 3 representation epochs with lambda_align 1.0 over 267 samples. The probe fits a linear classifier on 2*state_dim learned coordinates against 272 raw ones, so the learned side has more capacity to fit the split; the mech-04 sweep isolates the alignment weight instead.
+  mech-02: early small -0.1647 to early large -0.2941; late small -0.1529 to late large -0.1412
+
+checks that did not run or are blocked:
+  NOT_RUN external-01: no public archive is staged, so the cohort-level external values of Table 6 cannot be produced; the mechanism is executable on generated cohorts, whose values are not the manuscript's
+  NOT_RUN table1-01: the printed values were calibrated on the manuscript's own cohort assembly, which is not distributable; this environment runs the same protocol on a generated cohort whose concordance levels differ, so the printed values are transcribed but not reproduced
+  BLOCKED table6-01: the three external cohorts are served by archives that are not staged locally, and the counts (103, 39, 101) cannot be reproduced without those downloads
+
+cohort source: synthetic
+  No public archive is staged locally; cohorts are generated from the shared latent law so that the mechanisms stay executable.
+  Cohort-level values from the manuscript's external tables are therefore not reproducible in this environment and are reported as not run.
+
+The reported tables of the manuscript are transcribed in src/twindyn/reported.py.
+A table whose cohort assembly is not distributable is recorded as NOT_RUN or BLOCKED
+with the reason attached, never with a substituted number.

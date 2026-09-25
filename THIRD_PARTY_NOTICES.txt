@@ -1,0 +1,87 @@
+Third-party notices
+===================
+
+This file records the third-party inputs the release reads or depends on, with
+the licence and the source each one declares. Nothing here is redistributed with
+the release: the cohorts are fetched from the services below, and the packages are
+installed from their own distribution channels.
+
+Datasets
+--------
+
+TCGA-KIRC (training resource)
+  Source: National Cancer Institute Genomic Data Commons
+  URL: https://portal.gdc.cancer.gov/projects/TCGA-KIRC
+  Access: open tier, no application step declared on the project record
+  Licence: not declared by the source
+  Content check: the project record returns the accession TCGA-KIRC, the name
+  "Kidney Renal Clear Cell Carcinoma" and the primary site Kidney.
+
+CPTAC-ccRCC (external cohort, proteomic arm)
+  Source: Proteomic Data Commons, study PDC000127
+  URL: https://pdc.cancer.gov/pdc/study/PDC000127
+  Access: open download
+  Licence: the matched imaging collection is released under CC BY 4.0; the
+  proteomic arm declares no licence of its own
+  Content check: the study record describes clear cell renal cell carcinoma with
+  global proteome and phosphoproteome over the CPTAC discovery cohort.
+
+CPTAC-ccRCC imaging collection (histology)
+  Source: The Cancer Imaging Archive
+  URL declared in the manuscript: https://www.cancerimagingarchive.net/collection/cptac-ccrcc/
+  DOI declared in the manuscript: 10.7937/k9/tcia.2018.oblamn27
+  Access: released openly, version 14, released 2025-07-07, CC BY 4.0 as declared
+  Note: this host is not reachable from the environment where this release was
+  assembled, so the version, release date and licence are transcribed from the
+  manuscript's Data Availability Statement rather than re-fetched. No imaging data
+  is redistributed here.
+
+GSE29609 (external cohort)
+  Source: Gene Expression Omnibus
+  URL: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE29609
+  Access: freely downloadable, no access restriction
+  Licence: not declared by the source
+  Content check: the series record is titled "Clear-cell renal cell carcinomas
+  tumors" and reports 39 samples, matching the cohort size in the manuscript.
+
+E-MTAB-1980 (external cohort)
+  Source: ArrayExpress / BioStudies
+  URL: https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-1980
+  Access: openly released since 2013-10-16
+  Licence: not declared by the source
+  Content check: the study record is titled "ccRCC_expression" and describes gene
+  expression in clear cell renal cell carcinoma for 101 samples.
+
+Comparators named in the manuscript's main comparison
+-----------------------------------------------------
+
+The comparator rows of Table 1 are independent implementations written for this
+release under one shared protocol. The methods they stand for are named in the
+manuscript's reference list; no third-party implementation code is vendored here.
+Uncertainty-aware survival analysis, sparse and hierarchical transformers for
+whole-slide survival, cell-aware transformers, linear-attention multiple-instance
+learning and dense mixture-of-experts transformers are all re-expressed from their
+published descriptions rather than copied.
+
+Packages
+--------
+
+numpy            BSD-3-Clause        https://numpy.org
+scipy            BSD-3-Clause        https://scipy.org
+pandas           BSD-3-Clause        https://pandas.pydata.org
+scikit-learn     BSD-3-Clause        https://scikit-learn.org
+PyTorch          BSD-3-Clause        https://pytorch.org
+PyYAML           MIT                 https://pyyaml.org
+
+Development tooling referenced by the pre-commit configuration and the project
+metadata: ruff (MIT), black (MIT), isort (MIT), mypy (MIT), pytest (MIT),
+pre-commit (MIT).
+
+Container base image
+--------------------
+
+pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime, distributed by the PyTorch project
+under the BSD-3-Clause licence. The NGC image additionally carries the NVIDIA CUDA
+runtime and cuDNN, whose terms are the NVIDIA Software License Agreement.
+
+Nothing in this repository is a redistribution of any of the above.

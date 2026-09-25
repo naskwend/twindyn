@@ -1,0 +1,8 @@
+# Ablation variant, evaluated on the mean external concordance as reported in Table 2.
+experiment: ablation_readout_depth2
+variant: readout_depth_1_to_2
+output_dir: runs/ablation_readout_depth2
+
+evaluation:
+  initialisations: 10
+  bootstrap_resamples: 1000

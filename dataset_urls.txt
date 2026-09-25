@@ -1,0 +1,38 @@
+# Dataset links resolved and content-checked from this environment
+# Each entry was fetched and the returned content matched the resource named in the manuscript.
+
+[tcga_kirc] TCGA-KIRC
+  role: training resource
+  url: https://portal.gdc.cancer.gov/projects/TCGA-KIRC
+  content check: the project record returns project_id TCGA-KIRC, name Kidney Renal Clear Cell Carcinoma, primary site Kidney
+  access: GDC open tier; no application step
+  licence: not declared by the source
+
+[cptac_ccrcc] CPTAC-ccRCC proteomic arm
+  role: external cohort
+  url: https://pdc.cancer.gov/pdc/study/PDC000127
+  content check: study PDC000127 describes clear cell renal cell carcinoma with global proteome and phosphoproteome over the CPTAC discovery cohort
+  access: open PDC download
+  licence: CC BY 4.0 (imaging collection)
+
+[gse29609] GSE29609
+  role: external cohort
+  url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE29609
+  content check: series title 'Clear-cell renal cell carcinomas tumors' with 39 samples, matching the manuscript's cohort size
+  access: freely downloadable, no access restriction
+  licence: not declared by the source
+
+[emtab1980] E-MTAB-1980
+  role: external cohort
+  url: https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-1980
+  content check: study title 'ccRCC_expression' describing gene expression in clear cell RCC for 101 samples, released 2013-10-16
+  access: openly released
+  licence: not declared by the source
+
+# Endpoints declared by the manuscript that could not be re-fetched here
+# https://www.cancerimagingarchive.net/collection/cptac-ccrcc/
+#   declared in: Data Availability Statement
+#   reason: the host is not reachable from this environment, so the imaging collection version and licence could not be re-fetched and confirmed here
+# https://doi.org/10.7937/k9/tcia.2018.oblamn27
+#   declared in: Data Availability Statement
+#   reason: the DOI resolver is not reachable from this environment

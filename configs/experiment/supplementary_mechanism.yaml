@@ -1,0 +1,10 @@
+# supplementary_mechanism
+# The probe and perturbation arms of Table 5, with the probe repeated over ten splits.
+experiment: supplementary_mechanism
+variant: full
+output_dir: runs/supplementary_mechanism
+
+evaluation:
+  initialisations: 10
+  probe_repeats: 10
+  perturbation_scales: [0.25, 1.0]

@@ -1,0 +1,10 @@
+# Primary result: the representation learned once per initialisation and the read-out fitted on
+# the internal validation split of the training resource.
+# tau_max = 16 and state_dim = 64 are the values the manuscript selects.
+experiment: main
+variant: full
+output_dir: runs/main
+
+evaluation:
+  initialisations: 10
+  bootstrap_resamples: 1000

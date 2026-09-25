@@ -1,0 +1,44 @@
+# Optimisation, objective and reporting protocol.
+# The manuscript states one schedule for every variant and an equal tuning budget, and prints the
+# number of initialisations, the resample count and the two thresholds. It does not print the
+# optimiser, the learning rate, the batch size or the epoch counts, so those entries are
+# engineering defaults chosen by the internal-validation procedure in src/twindyn/evaluation/selection.py.
+optim:
+  optimizer: adamw
+  learning_rate: 0.001
+  readout_learning_rate: 0.001
+  weight_decay: 0.0001
+  scheduler: warmup_cosine
+  warmup_steps: 200
+  grad_clip: 1.0
+  precision: fp32
+  batch_size: 64
+  grad_accum: 1
+  world_size: 1
+  representation_epochs: 60
+  readout_epochs: 40
+  ema_decay: 0.0
+  early_stopping_patience: 0
+
+objective:
+  lambda_mask: 1.0
+  lambda_align: 1.0
+  lambda_trajectory: 0.5
+  trajectory_temperature: 0.1
+
+evaluation:
+  bootstrap_resamples: 1000
+  confidence_level: 0.95
+  initialisations: 10
+  correction: holm_bonferroni
+  external_threshold: 0.03
+  decision_margin: 0.005
+  probe_repeats: 10
+  perturbation_scales: [0.25, 1.0]
+  label_fractions: [0.10, 0.25, 0.50, 1.00]
+  random_state: 0
+
+seed: 0
+device: cpu
+deterministic: true
+output_dir: runs/main

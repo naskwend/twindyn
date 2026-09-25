@@ -1,0 +1,8 @@
+# Ablation variant, evaluated on the mean external concordance as reported in Table 2.
+experiment: ablation_alignment_clinical_only
+variant: alignment_clinical_only
+output_dir: runs/ablation_alignment_clinical_only
+
+evaluation:
+  initialisations: 10
+  bootstrap_resamples: 1000

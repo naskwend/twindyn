@@ -1,0 +1,8 @@
+# Ablation variant, evaluated on the mean external concordance as reported in Table 2.
+experiment: ablation_trajectory_pooling
+variant: minus_trajectory_pooling
+output_dir: runs/ablation_trajectory_pooling
+
+evaluation:
+  initialisations: 10
+  bootstrap_resamples: 1000

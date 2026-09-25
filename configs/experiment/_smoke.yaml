@@ -1,0 +1,27 @@
+# for unit-test smoke only; do not use for reporting
+# Short enough to finish inside a test session, with the paper's selected geometry kept so the
+# smoke exercises the same shapes.
+experiment: _smoke
+variant: full
+output_dir: runs/_smoke
+
+axis:
+  tau_max: 16
+features:
+  morphology_features: 64
+model:
+  state_dim: 64
+data:
+  synthetic_samples_per_resource: 16
+optim:
+  batch_size: 16
+  representation_epochs: 3
+  readout_epochs: 3
+  warmup_steps: 2
+evaluation:
+  initialisations: 1
+  bootstrap_resamples: 20
+  probe_repeats: 1
+  label_fractions: [1.0]
+alignment:
+  max_pairs_per_resource: 8

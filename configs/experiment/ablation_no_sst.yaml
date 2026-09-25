@@ -1,0 +1,8 @@
+# Ablation variant, evaluated on the mean external concordance as reported in Table 2.
+experiment: ablation_no_sst
+variant: minus_sst_static_matched
+output_dir: runs/ablation_no_sst
+
+evaluation:
+  initialisations: 10
+  bootstrap_resamples: 1000

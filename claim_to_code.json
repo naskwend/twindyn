@@ -1,0 +1,1035 @@
+{
+  "absent_identifiers": [
+    "B14"
+  ],
+  "claim_count": 48,
+  "claims": [
+    {
+      "check_status": {
+        "data-01": "PASS",
+        "eq1-01": "PASS",
+        "eq1-02": "PASS"
+      },
+      "checks": [
+        "eq1-01",
+        "eq1-02",
+        "data-01"
+      ],
+      "claim": "The microenvironment observation for a tumour is a compartment block followed by a morphology block.",
+      "code": [
+        "src/twindyn/data/schema.py:SampleRecord",
+        "src/twindyn/data/axis.py:MicroenvironmentAxis"
+      ],
+      "id": "C01",
+      "notes": "",
+      "paper_location": "Sec. 3.1, Eq. (1)",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "data-05": "PASS",
+        "sst-02": "PASS",
+        "sst-03": "PASS",
+        "sst-04": "PASS"
+      },
+      "checks": [
+        "sst-02",
+        "sst-03",
+        "sst-04",
+        "data-05"
+      ],
+      "claim": "The state evolves along an ordered axis with z(tau) = A(tau) z(tau-1) + B(tau) u(tau) and x(tau) = C z(tau) + noise.",
+      "code": [
+        "src/twindyn/models/scan.py:selective_scan",
+        "src/twindyn/models/sst.py:SelectiveStateSpaceTransition",
+        "src/twindyn/data/synthetic.py:LatentLaw"
+      ],
+      "id": "C02",
+      "notes": "",
+      "paper_location": "Sec. 3.1, Eq. (2)",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "axis-01": "PASS",
+        "axis-02": "PASS",
+        "axis-03": "PASS",
+        "axis-04": "PASS",
+        "eq1-02": "PASS"
+      },
+      "checks": [
+        "eq1-02",
+        "axis-01",
+        "axis-02",
+        "axis-03",
+        "axis-04"
+      ],
+      "claim": "The ordered axis is a predefined organisation of the sample's compartments, fixed before training and never adjusted to an outcome.",
+      "code": [
+        "src/twindyn/data/compartments.py:RAW_COMPARTMENTS",
+        "src/twindyn/data/axis.py:MicroenvironmentAxis"
+      ],
+      "id": "C03",
+      "notes": "",
+      "paper_location": "Sec. 3.2, Sec. 3.10, Sec. 4.4",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "mech-01": "FAIL",
+        "msi-01": "PASS",
+        "msi-02": "PASS",
+        "msi-04": "PASS",
+        "pair-02": "PASS"
+      },
+      "checks": [
+        "msi-01",
+        "msi-02",
+        "msi-04",
+        "pair-02",
+        "mech-01"
+      ],
+      "claim": "Using the common map C, MSI links the observation to a hidden state that carries no information about the resource that produced it.",
+      "code": [
+        "src/twindyn/models/msi.py:MultiSourceInvariantEncoder",
+        "src/twindyn/losses/alignment.py"
+      ],
+      "id": "C04",
+      "notes": "",
+      "paper_location": "Sec. 3.3",
+      "status": "PARTIALLY_VERIFIED"
+    },
+    {
+      "check_status": {
+        "pair-02": "PASS",
+        "pair-04": "PASS",
+        "pair-05": "PASS"
+      },
+      "checks": [
+        "pair-02",
+        "pair-04",
+        "pair-05"
+      ],
+      "claim": "The alignment term stays unspecified for a resource pair that shares no matched samples and contributes only to the other objectives.",
+      "code": [
+        "src/twindyn/data/pairs.py:batch_alignment_pairs",
+        "src/twindyn/losses/alignment.py"
+      ],
+      "id": "C05",
+      "notes": "",
+      "paper_location": "Sec. 3.3",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "sst-05": "PASS",
+        "sst-06": "PASS"
+      },
+      "checks": [
+        "sst-05",
+        "sst-06"
+      ],
+      "claim": "SST is selective: it chooses how much new observation to write and how much of the existing state to keep.",
+      "code": [
+        "src/twindyn/models/sst.py:SelectiveStateSpaceTransition",
+        "src/twindyn/models/scan.py"
+      ],
+      "id": "C06",
+      "notes": "",
+      "paper_location": "Sec. 3.4",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "sst-02": "PASS",
+        "sst-03": "PASS",
+        "sst-04": "PASS",
+        "sst-08": "PASS",
+        "sst-09": "PASS"
+      },
+      "checks": [
+        "sst-02",
+        "sst-03",
+        "sst-04",
+        "sst-08",
+        "sst-09"
+      ],
+      "claim": "The operator is instantiated with an exponential-trapezoidal discretisation, a complex-valued state and a multi-input multi-output form.",
+      "code": [
+        "src/twindyn/models/scan.py:exponential_trapezoidal_step",
+        "src/twindyn/models/scan.py:selective_scan"
+      ],
+      "id": "C07",
+      "notes": "",
+      "paper_location": "Sec. 3.4; reference 54",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "sst-01": "PASS"
+      },
+      "checks": [
+        "sst-01"
+      ],
+      "claim": "The scan cost grows linearly as O(tau_max d^2), which is what makes the resolution of the microenvironment affordable.",
+      "code": [
+        "src/twindyn/models/scan.py:scan_cost",
+        "src/twindyn/models/sst.py:analytic_cost"
+      ],
+      "id": "C08",
+      "notes": "",
+      "paper_location": "Sec. 3.8",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "model-01": "PASS",
+        "model-02": "PASS",
+        "train-05": "PASS"
+      },
+      "checks": [
+        "model-01",
+        "model-02",
+        "train-05"
+      ],
+      "claim": "TOR combines trajectory characteristics along the axis and passes them through a light survival head with the depth kept to a minimum.",
+      "code": [
+        "src/twindyn/models/tor.py:TrajectoryPool",
+        "src/twindyn/models/tor.py:TrajectoryOutcomeReadout"
+      ],
+      "id": "C09",
+      "notes": "",
+      "paper_location": "Sec. 3.5",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "loss-06": "PASS",
+        "loss-07": "PASS",
+        "loss-08": "PASS"
+      },
+      "checks": [
+        "loss-06",
+        "loss-07",
+        "loss-08"
+      ],
+      "claim": "The read-out is trained with the conventional survival objective for a continuous risk under right censoring, and it is the only place a survival label enters.",
+      "code": [
+        "src/twindyn/losses/survival.py:cox_partial_likelihood",
+        "src/twindyn/training/engine.py:train_readout"
+      ],
+      "id": "C10",
+      "notes": "",
+      "paper_location": "Sec. 3.5; reference 47",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "loss-01": "PASS",
+        "loss-02": "PASS",
+        "loss-08": "PASS"
+      },
+      "checks": [
+        "loss-01",
+        "loss-02",
+        "loss-08"
+      ],
+      "claim": "The representation-learning objective is the weighted sum of the masked reconstruction, the cross-resource alignment and the trajectory consistency terms, with no survival label.",
+      "code": [
+        "src/twindyn/losses/composite.py:composite_objective"
+      ],
+      "id": "C11",
+      "notes": "",
+      "paper_location": "Sec. 3.6, Eq. (3)",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "mask-01": "PASS",
+        "mask-02": "PASS",
+        "mask-03": "PASS",
+        "mask-04": "PASS",
+        "train-06": "PASS"
+      },
+      "checks": [
+        "mask-01",
+        "mask-02",
+        "mask-03",
+        "mask-04",
+        "train-06"
+      ],
+      "claim": "L_mask is the squared error of the reconstruction of a masked fraction of the observed locations, taken from the resulting state.",
+      "code": [
+        "src/twindyn/losses/reconstruction.py:masked_reconstruction_loss",
+        "src/twindyn/data/masking.py:sample_mask"
+      ],
+      "id": "C12",
+      "notes": "",
+      "paper_location": "Sec. 3.6, Eq. (4)",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "loss-03": "PASS",
+        "pair-03": "PASS"
+      },
+      "checks": [
+        "pair-03",
+        "loss-03"
+      ],
+      "claim": "L_align is the squared state distance over matched pairs drawn from different resources.",
+      "code": [
+        "src/twindyn/losses/alignment.py:cross_resource_alignment_loss"
+      ],
+      "id": "C13",
+      "notes": "",
+      "paper_location": "Sec. 3.6, Eq. (5)",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "loss-04": "PASS",
+        "loss-05": "PASS"
+      },
+      "checks": [
+        "loss-04",
+        "loss-05"
+      ],
+      "claim": "L_traj requires the operator to predict the future positions of a trajectory from its past, with g the pooled summary and cos the similarity.",
+      "code": [
+        "src/twindyn/losses/trajectory.py:trajectory_consistency_loss"
+      ],
+      "id": "C14",
+      "notes": "",
+      "paper_location": "Sec. 3.6, Eq. (6)",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "data-01": "PASS",
+        "data-08": "PASS",
+        "mask-01": "PASS",
+        "mask-02": "PASS"
+      },
+      "checks": [
+        "mask-01",
+        "mask-02",
+        "data-01",
+        "data-08"
+      ],
+      "claim": "Masking is applied at different densities because the same biological system appears at different observation densities across resources.",
+      "code": [
+        "src/twindyn/data/masking.py:position_availability",
+        "src/twindyn/data/schema.py:SampleRecord"
+      ],
+      "id": "C15",
+      "notes": "",
+      "paper_location": "Sec. 3.6",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "mech-01": "FAIL",
+        "msi-01": "PASS",
+        "sst-07": "PASS"
+      },
+      "checks": [
+        "msi-01",
+        "sst-07",
+        "mech-01"
+      ],
+      "claim": "Identifiability: under a shared full-rank observation map, resource overlap and a separated spectrum, the state and the transition operator are identifiable up to an invertible linear transformation.",
+      "code": [
+        "src/twindyn/models/msi.py:state_map_rank",
+        "src/twindyn/models/scan.py:spectrum_separation",
+        "src/twindyn/models/probe.py:invariance_gap"
+      ],
+      "id": "C16",
+      "notes": "",
+      "paper_location": "Sec. 3.7, Assumptions 1-3, Theorem 1, Appendix 1",
+      "status": "PARTIALLY_VERIFIED"
+    },
+    {
+      "check_status": {
+        "mech-01": "FAIL",
+        "metric-02": "PASS"
+      },
+      "checks": [
+        "metric-02",
+        "mech-01"
+      ],
+      "claim": "The invariance of discrimination follows from the theorem: a ranking-based read-out is unchanged by the transformation the theorem leaves free.",
+      "code": [
+        "src/twindyn/models/tor.py:TrajectoryOutcomeReadout",
+        "src/twindyn/metrics/concordance.py"
+      ],
+      "id": "C17",
+      "notes": "",
+      "paper_location": "Sec. 3.7, Corollary 1",
+      "status": "PARTIALLY_VERIFIED"
+    },
+    {
+      "check_status": {
+        "train-01": "PASS",
+        "train-06": "PASS",
+        "train-07": "PASS"
+      },
+      "checks": [
+        "train-01",
+        "train-06",
+        "train-07"
+      ],
+      "claim": "Algorithm 1: the representation phase samples (observation, resource) pairs, runs MSI then SST, evaluates the three terms and updates MSI and SST by gradient descent.",
+      "code": [
+        "src/twindyn/training/engine.py:train_representation"
+      ],
+      "id": "C18",
+      "notes": "",
+      "paper_location": "Algorithm 1",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "model-01": "PASS",
+        "train-01": "PASS"
+      },
+      "checks": [
+        "model-01",
+        "train-01"
+      ],
+      "claim": "Algorithm 2: inference runs MSI, then SST along the axis, pools the trajectory and returns a risk score.",
+      "code": [
+        "src/twindyn/training/engine.py:score",
+        "src/twindyn/models/twindyn.py:TwinDyn.forward"
+      ],
+      "id": "C19",
+      "notes": "",
+      "paper_location": "Algorithm 2",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "deconv-01": "PASS",
+        "deconv-02": "PASS",
+        "deconv-03": "PASS"
+      },
+      "checks": [
+        "deconv-01",
+        "deconv-02",
+        "deconv-03"
+      ],
+      "claim": "The deconvolution configuration that produces the compartment ratios is fixed before any findings and is never tuned on an outcome, and its sensitivity is measured.",
+      "code": [
+        "src/twindyn/data/deconvolution.py"
+      ],
+      "id": "C20",
+      "notes": "",
+      "paper_location": "Sec. 3.10, Sec. 4.4",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "loss-02": "PASS",
+        "reported-06": "PASS",
+        "reported-07": "PASS"
+      },
+      "checks": [
+        "reported-06",
+        "reported-07",
+        "loss-02"
+      ],
+      "claim": "The only quantities chosen on internal validation are the latent dimension, the masking ratio and the objective weights, with the read-out depth stated next to them.",
+      "code": [
+        "src/twindyn/evaluation/selection.py",
+        "src/twindyn/cli/sweep.py"
+      ],
+      "id": "C21",
+      "notes": "",
+      "paper_location": "Sec. 3.10, Sec. 4.4",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "ckpt-01": "PASS",
+        "ckpt-03": "PASS",
+        "ckpt-04": "PASS"
+      },
+      "checks": [
+        "ckpt-01",
+        "ckpt-03",
+        "ckpt-04"
+      ],
+      "claim": "Random initialisation methods are predetermined and indexed, so a representation is learned once per initialisation and every read-out variant reuses it.",
+      "code": [
+        "src/twindyn/training/seeding.py:plan_initialisations",
+        "src/twindyn/pipeline.py:run_experiment"
+      ],
+      "id": "C22",
+      "notes": "",
+      "paper_location": "Sec. 3.10, Sec. 4.4",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "data-03": "PASS",
+        "data-04": "PASS"
+      },
+      "checks": [
+        "data-03",
+        "data-04"
+      ],
+      "claim": "Four public resources are used: TCGA-KIRC for training and CPTAC-ccRCC, GSE29609 and E-MTAB-1980 as external cohorts from different repositories.",
+      "code": [
+        "src/twindyn/data/resources.py:RESOURCES"
+      ],
+      "id": "C23",
+      "notes": "",
+      "paper_location": "Sec. 4.1, Data Availability Statement",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "fs-01": "PASS",
+        "fs-02": "PASS"
+      },
+      "checks": [
+        "fs-01",
+        "fs-02"
+      ],
+      "claim": "The shared feature space is the intersection of observable features rather than a union with imputation, and missing features cannot be filled in.",
+      "code": [
+        "src/twindyn/data/feature_space.py:intersect_inventories"
+      ],
+      "id": "C24",
+      "notes": "",
+      "paper_location": "Sec. 4.1",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "split-01": "PASS",
+        "split-02": "PASS"
+      },
+      "checks": [
+        "split-01",
+        "split-02"
+      ],
+      "claim": "The splitting is at the level of tumour samples and zero overlap is verified rather than presumed.",
+      "code": [
+        "src/twindyn/data/splits.py:assert_zero_overlap"
+      ],
+      "id": "C25",
+      "notes": "",
+      "paper_location": "Sec. 4.1",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "metric-09": "PASS",
+        "metric-11": "PASS",
+        "reported-08": "PASS"
+      },
+      "checks": [
+        "metric-09",
+        "metric-11",
+        "reported-08"
+      ],
+      "claim": "The primary criterion is a paired external concordance difference of at least 0.03 against the strongest static composition baseline, assessed per resource.",
+      "code": [
+        "src/twindyn/metrics/decision.py:primary_criterion"
+      ],
+      "id": "C26",
+      "notes": "",
+      "paper_location": "Sec. 4.2",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "metric-06": "PASS",
+        "metric-07": "PASS"
+      },
+      "checks": [
+        "metric-06",
+        "metric-07"
+      ],
+      "claim": "The external family holds three paired comparisons and the label-efficiency family four, each corrected with Holm-Bonferroni.",
+      "code": [
+        "src/twindyn/metrics/correction.py:holm_bonferroni",
+        "src/twindyn/metrics/decision.py:hypothesis_families"
+      ],
+      "id": "C27",
+      "notes": "",
+      "paper_location": "Sec. 4.2",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "metric-04": "PASS",
+        "metric-05": "PASS"
+      },
+      "checks": [
+        "metric-04",
+        "metric-05"
+      ],
+      "claim": "Confidence intervals are 95% bootstrap intervals over 1,000 resamples and pairwise comparisons report an uncorrected and a corrected p-value.",
+      "code": [
+        "src/twindyn/metrics/bootstrap.py"
+      ],
+      "id": "C28",
+      "notes": "",
+      "paper_location": "Sec. 4.4",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "metric-09": "PASS",
+        "metric-10": "PASS"
+      },
+      "checks": [
+        "metric-09",
+        "metric-10"
+      ],
+      "claim": "The predetermined decision margin is 0.005 concordance units, and a result below it counts as a lack of improvement.",
+      "code": [
+        "src/twindyn/metrics/decision.py:decide"
+      ],
+      "id": "C29",
+      "notes": "",
+      "paper_location": "Sec. 4.4",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "reported-03": "PASS",
+        "table1-01": "NOT_RUN"
+      },
+      "checks": [
+        "reported-03",
+        "table1-01"
+      ],
+      "claim": "The main comparison spans 0.612 for a clinical Cox model to 0.731 for the static composition representation, with TwinDyn at 0.734 and a margin of 0.003 reported as parity.",
+      "code": [
+        "src/twindyn/models/baselines/inventory.py",
+        "src/twindyn/reported.py"
+      ],
+      "id": "C30",
+      "notes": "",
+      "paper_location": "Table 1, Sec. 4.5",
+      "status": "PARTIALLY_VERIFIED"
+    },
+    {
+      "check_status": {
+        "compare-01": "PASS",
+        "train-04": "PASS"
+      },
+      "checks": [
+        "compare-01",
+        "train-04"
+      ],
+      "claim": "All rows of the main comparison are evaluated on the identical held-out sample set with identical preprocessing.",
+      "code": [
+        "src/twindyn/models/baselines/protocol.py:BaselineProtocol",
+        "src/twindyn/pipeline.py:run_comparators"
+      ],
+      "id": "C31",
+      "notes": "",
+      "paper_location": "Table 1 caption",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "mech-03": "PASS",
+        "sst-10": "PASS"
+      },
+      "checks": [
+        "sst-10",
+        "mech-03"
+      ],
+      "claim": "The parameter-matched control replaces the selective operator with a static encoder of matched count, so the drop is attributable to the transition law rather than to capacity.",
+      "code": [
+        "src/twindyn/models/static_transition.py",
+        "src/twindyn/evaluation/sweeps.py:AblationVariant"
+      ],
+      "id": "C32",
+      "notes": "",
+      "paper_location": "Table 2, Sec. 4.6",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "metric-10": "PASS",
+        "reported-02": "FAIL"
+      },
+      "checks": [
+        "metric-10",
+        "reported-02"
+      ],
+      "claim": "The full model reports 0.655 against 0.614 for the static control, and max drop over min drop is 0.041/0.003 = 13.7x with 92.7% margin retention at equal budget.",
+      "code": [
+        "src/twindyn/evaluation/sweeps.py:assemble_ablation",
+        "src/twindyn/metrics/decision.py:drop_ratio"
+      ],
+      "id": "C33",
+      "notes": "",
+      "paper_location": "Table 2, caption of the ablation",
+      "status": "PARTIALLY_VERIFIED"
+    },
+    {
+      "check_status": {
+        "pair-05": "PASS"
+      },
+      "checks": [
+        "pair-05"
+      ],
+      "claim": "The clinical-covariate-only alignment variant is a designed null that falls below the prespecified margin and is reported as an ablation with no effect.",
+      "code": [
+        "src/twindyn/evaluation/sweeps.py",
+        "src/twindyn/data/pairs.py"
+      ],
+      "id": "C34",
+      "notes": "",
+      "paper_location": "Table 2, Sec. 4.6",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "metric-12": "PASS"
+      },
+      "checks": [
+        "metric-12"
+      ],
+      "claim": "The stage profile across the external cohorts is non-monotone with a trough at stage II, and the grade profile is monotone from 0.702 to 0.612.",
+      "code": [
+        "src/twindyn/metrics/strata.py:monotonicity",
+        "src/twindyn/metrics/strata.py:stratum_rows"
+      ],
+      "id": "C35",
+      "notes": "",
+      "paper_location": "Table 3, Sec. 4.7, Sec. 4.11",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "data-08": "PASS",
+        "split-05": "PASS"
+      },
+      "checks": [
+        "split-05",
+        "data-08"
+      ],
+      "claim": "Withholding the morphology features costs 0.004 and withholding the compartment fractions costs 0.033, against 0.039 for the strongest supervised multimodal baseline.",
+      "code": [
+        "src/twindyn/data/splits.py:modality_dropout",
+        "src/twindyn/metrics/strata.py:dropout_rows"
+      ],
+      "id": "C36",
+      "notes": "",
+      "paper_location": "Table 3, Sec. 4.7",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "axis-02": "PASS",
+        "reported-05": "PASS",
+        "reported-07": "PASS"
+      },
+      "checks": [
+        "axis-02",
+        "reported-05",
+        "reported-07"
+      ],
+      "claim": "Trajectory length is swept over 4/8/16/32 with a plateau after 16 and the state dimension over 16/32/64/128 with saturation after 64.",
+      "code": [
+        "src/twindyn/evaluation/sweeps.py:axis_length_sweep",
+        "src/twindyn/evaluation/sweeps.py:plateau_point"
+      ],
+      "id": "C37",
+      "notes": "",
+      "paper_location": "Table 4, Sec. 4.8",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "axis-03": "PASS"
+      },
+      "checks": [
+        "axis-03"
+      ],
+      "claim": "Shuffling the axis before training costs 0.037 concordance, more than any hyperparameter effect, so the ordering is load-bearing.",
+      "code": [
+        "src/twindyn/data/axis.py:MicroenvironmentAxis.shuffled",
+        "src/twindyn/evaluation/sweeps.py:shuffled_axis"
+      ],
+      "id": "C38",
+      "notes": "",
+      "paper_location": "Table 4, Sec. 4.8, Sec. 5.1",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "pair-03": "PASS"
+      },
+      "checks": [
+        "pair-03"
+      ],
+      "claim": "The alignment magnitude is reported per resource pair relative to its value at initialisation and decreases during training.",
+      "code": [
+        "src/twindyn/losses/alignment.py:relative_alignment",
+        "src/twindyn/pipeline.py:relative_alignment"
+      ],
+      "id": "C39",
+      "notes": "Equation (5) is used unnormalised, so its raw relative magnitude follows the state's growth during training; the release reports it and marks the reading as a deviation.",
+      "paper_location": "Table 4, Sec. 4.8",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "mech-03": "PASS",
+        "sst-10": "PASS"
+      },
+      "checks": [
+        "sst-10",
+        "mech-03"
+      ],
+      "claim": "Necessity: replacing the selective operator with the matched static control costs 0.041, the largest single drop.",
+      "code": [
+        "src/twindyn/models/static_transition.py",
+        "src/twindyn/evaluation/sweeps.py"
+      ],
+      "id": "C40",
+      "notes": "",
+      "paper_location": "Table 5, Table 2, Sec. 4.9",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "data-07": "PASS",
+        "mech-01": "FAIL"
+      },
+      "checks": [
+        "mech-01",
+        "data-07"
+      ],
+      "claim": "Invariance: a linear probe recovers resource identity at 0.612 from the raw composition and only 0.271 from the learned state, against chance 0.25.",
+      "code": [
+        "src/twindyn/models/probe.py:resource_probe",
+        "src/twindyn/evaluation/mechanism.py:invariance_evidence"
+      ],
+      "id": "C41",
+      "notes": "",
+      "paper_location": "Table 5, Sec. 4.9, Sec. 4.6",
+      "status": "PARTIALLY_VERIFIED"
+    },
+    {
+      "check_status": {
+        "mech-02": "FAIL",
+        "model-03": "PASS"
+      },
+      "checks": [
+        "mech-02",
+        "model-03"
+      ],
+      "claim": "Perturbation response: noise injected early costs more than noise injected late, and the loss grows with the noise scale.",
+      "code": [
+        "src/twindyn/evaluation/mechanism.py:perturbation_evidence",
+        "src/twindyn/models/twindyn.py:perturbed_risk"
+      ],
+      "id": "C42",
+      "notes": "",
+      "paper_location": "Table 5, Sec. 4.9",
+      "status": "PARTIALLY_VERIFIED"
+    },
+    {
+      "check_status": {
+        "external-01": "NOT_RUN",
+        "table6-01": "BLOCKED"
+      },
+      "checks": [
+        "external-01",
+        "table6-01"
+      ],
+      "claim": "Resource-disjoint external validation reports 0.658 over 0.612, 0.667 over 0.628 and 0.641 over 0.601 on cohorts of 103, 39 and 101 samples.",
+      "code": [
+        "src/twindyn/evaluation/external.py:evaluate_external"
+      ],
+      "id": "C43",
+      "notes": "",
+      "paper_location": "Table 6, Sec. 4.10",
+      "status": "BLOCKED"
+    },
+    {
+      "check_status": {
+        "metric-14": "PASS",
+        "reported-01": "PASS"
+      },
+      "checks": [
+        "metric-14",
+        "reported-01"
+      ],
+      "claim": "TwinDyn loses 0.076, 0.067 and 0.093 from the training resource while the static baselines lose 0.119, 0.103 and 0.130, a reduction of about one third.",
+      "code": [
+        "src/twindyn/metrics/transfer.py:TransferTax",
+        "src/twindyn/metrics/transfer.py:tax_reduction"
+      ],
+      "id": "C44",
+      "notes": "",
+      "paper_location": "Sec. 4.10, Sec. 5.2, Conclusion",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "metric-13": "PASS",
+        "split-03": "PASS"
+      },
+      "checks": [
+        "metric-13",
+        "split-03"
+      ],
+      "claim": "At ten percent of the labels the margin is 0.076, at twenty-five percent 0.038, at fifty percent 0.012, and the no-label frozen representation still reaches 0.658 on an unseen resource.",
+      "code": [
+        "src/twindyn/metrics/efficiency.py:efficiency_curve",
+        "src/twindyn/pipeline.py:run_label_efficiency"
+      ],
+      "id": "C45",
+      "notes": "",
+      "paper_location": "Sec. 4.10, Fig. 4 of the manuscript",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "metric-12": "PASS"
+      },
+      "checks": [
+        "metric-12"
+      ],
+      "claim": "The learned state carries information beyond stage and grade, with non-monotone within-stratum gains of 0.021, 0.036, 0.051 and 0.007.",
+      "code": [
+        "src/twindyn/metrics/strata.py:within_stratum_gain",
+        "src/twindyn/pipeline.py:run_generalisation"
+      ],
+      "id": "C46",
+      "notes": "",
+      "paper_location": "Sec. 4.11, Table 3",
+      "status": "PASS"
+    },
+    {
+      "check_status": {
+        "metric-06": "PASS",
+        "reported-02": "FAIL"
+      },
+      "checks": [
+        "metric-06",
+        "reported-02"
+      ],
+      "claim": "The ablation, the probe and the perturbation response together form the mechanism case, and the ablation family is descriptive rather than a corrected hypothesis family.",
+      "code": [
+        "src/twindyn/metrics/decision.py:hypothesis_families",
+        "src/twindyn/evaluation/reporting.py"
+      ],
+      "id": "C47",
+      "notes": "",
+      "paper_location": "Sec. 4.9, Sec. 4.2, Table 5",
+      "status": "PARTIALLY_VERIFIED"
+    },
+    {
+      "check_status": {
+        "data-03": "PASS",
+        "data-04": "PASS"
+      },
+      "checks": [
+        "data-03",
+        "data-04"
+      ],
+      "claim": "Everything the manuscript reports rests on public resources whose access conditions are declared, and the code release itself carries the third-party provenance.",
+      "code": [
+        "dataset_urls.txt",
+        "THIRD_PARTY_NOTICES.txt",
+        "src/twindyn/data/resources.py"
+      ],
+      "id": "C48",
+      "notes": "",
+      "paper_location": "Data Availability Statement, Conflict of Interest Statement",
+      "status": "PASS"
+    }
+  ],
+  "code_references_missing": [],
+  "deviations": [
+    {
+      "departs": "The supplementary material is not part of the distributed file set, so the sixteen-position ordering is the engineering default in src/twindyn/data/compartments.py.",
+      "justification": "The ordering is fixed before training and never tuned on an outcome, which is the property the manuscript relies on; the registry is exposed so the released ordering can be substituted.",
+      "paper_location": "Sec. 3.10, Sec. 4.4 (the ordered axis comes from the predefined compartment ordering in the supplementary material)",
+      "subject": "tau to compartment assignment rule"
+    },
+    {
+      "departs": "The manuscript names the method families and reports sensitivity but does not print the configuration, so marker counts, panel size and ridge are engineering defaults.",
+      "justification": "The configuration is fixed before any outcome is seen and its sensitivity is measured by src/twindyn/data/deconvolution.py:sensitivity_sweep rather than assumed away.",
+      "paper_location": "Sec. 3.10, Sec. 4.4",
+      "subject": "deconvolution configuration"
+    },
+    {
+      "departs": "The selected values are not printed, so the configuration carries engineering defaults and src/twindyn/evaluation/selection.py implements the selection procedure.",
+      "justification": "The procedure the manuscript describes is executable; the default values are marked in the configuration and listed in the claim map under unreported quantities.",
+      "paper_location": "Sec. 4.4 (the objective weights and the masking ratio are chosen on internal validation)",
+      "subject": "objective weights and masking ratio"
+    },
+    {
+      "departs": "No learning rate, optimiser, batch size or epoch count is printed, so these are engineering defaults exposed in configs/train/base.yaml.",
+      "justification": "All variants share one schedule and one budget, which is the property the ablation depends on; the values are configuration entries rather than hidden constants.",
+      "paper_location": "Sec. 4.4 (a single schedule and an equal tuning budget)",
+      "subject": "optimiser, schedule, batch size and epoch counts"
+    },
+    {
+      "departs": "Equation (5) is used unnormalised as written, so its raw value relative to initialisation follows the state's growth during training; the release reports the raw ratio and a state-scaled companion.",
+      "justification": "The manuscript reports a decrease in the raw relative magnitude that this environment does not reproduce, so both readings are reported rather than only the favourable one.",
+      "paper_location": "Table 4, Sec. 4.8",
+      "subject": "alignment magnitude reporting"
+    },
+    {
+      "departs": "The alignment term needs cross-resource pairs, so the representation phase reads the observations of every resource listed in data.resources with no labels at any point; only the read-out sees labels, and external cohorts are scored frozen.",
+      "justification": "The manuscript's own design requires matched samples from more than one resource for equation (5) to be defined; the read-out and every reported external number remain disjoint from the read-out's fitting data, which the split checks verify.",
+      "paper_location": "Sec. 4.1 (representation learning uses the training resources along with the observations corresponding to the alignment task; external numbers come from a population never used in training)",
+      "subject": "resource-disjoint scope of the representation phase"
+    },
+    {
+      "departs": "No pathology foundation checkpoint ships with the release, so the frozen trunk is a fixed random projection with a recorded seed.",
+      "justification": "The row is reported with that qualification in src/twindyn/models/baselines/foundation.py rather than with the published encoder's value.",
+      "paper_location": "Table 1, row B19",
+      "subject": "foundation-model comparator"
+    },
+    {
+      "departs": "The four public archives are not staged in this environment, so the mechanism checks run against cohorts generated from the manuscript's own state-space law.",
+      "justification": "A generated cohort is not the manuscript's cohort, so every cohort-level reported value is recorded NOT_RUN or BLOCKED with the reason instead of being substituted.",
+      "paper_location": "Sec. 4.1, Tables 1-6",
+      "subject": "cohorts behind the reported tables"
+    }
+  ],
+  "note": "Every claim carries the location in the manuscript it comes from, the files that carry it and the execution checks that test it. A claim whose checks did not all pass is reported as partially verified or not run rather than as reproduced.",
+  "paper_title": "Self-Supervised Digital Twin Modeling of Tumor Microenvironment Dynamics for Survival Prognosis in Kidney Cancer",
+  "pass": "paper claim to code mapping",
+  "reported_values_module": "src/twindyn/reported.py",
+  "selected_values": {
+    "mask_ratio": 0.3,
+    "state_dim": 64,
+    "tau_max": 16
+  },
+  "unreported_quantities": [
+    "mask_ratio",
+    "lambda_mask",
+    "lambda_align",
+    "lambda_trajectory",
+    "batch_size",
+    "optimizer",
+    "learning_rate",
+    "readout_learning_rate",
+    "weight_decay",
+    "scheduler",
+    "warmup_steps",
+    "grad_clip",
+    "precision",
+    "representation_epochs",
+    "readout_epochs",
+    "tau_to_compartment_assignment_rule",
+    "deconvolution_configuration",
+    "shared_feature_space_size"
+  ]
+}

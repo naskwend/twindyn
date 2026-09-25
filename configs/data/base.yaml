@@ -1,0 +1,57 @@
+# Data geometry and the fixed preprocessing choices.
+# tau_max and state_dim carry the values the manuscript selects (Table 4 / Sec. 4.4).
+# morphology_features and the deconvolution block are engineering defaults: the manuscript
+# states that the deconvolution configuration is fixed and that the compartment ordering comes
+# from the supplementary material, but does not print either value. Both are exposed here and
+# their sensitivity is measured by the release.
+axis:
+  tau_max: 16
+  ordering_rule: predefined_compartment_index
+  shuffle_positions: false
+  shuffle_seed: 0
+  aggregation_level: 0
+
+features:
+  mode: intersection
+  min_coverage: 0.0
+  max_features: 512
+  morphology_features: 256
+  standardise: true
+
+deconvolution:
+  method: reference_nnls
+  reference: ccrcc_compartment_reference_v1
+  marker_genes_per_compartment: 40
+  gene_panel_size: 2000
+  ridge: 0.0
+  normalise_fractions: true
+  log_transform: true
+
+masking:
+  ratio: 0.30
+  strategy: position_uniform
+  min_positions_kept: 2
+
+alignment:
+  mode: anchor_matched
+  anchor_compartments: true
+  clinical_only_null: false
+  max_pairs_per_resource: 4096
+
+data:
+  root: data
+  resources:
+    - tcga_kirc
+    - cptac_ccrcc
+    - gse29609
+    - emtab1980
+  training_resource: tcga_kirc
+  external_resources:
+    - cptac_ccrcc
+    - gse29609
+    - emtab1980
+  internal_validation_fraction: 0.20
+  synthetic_samples_per_resource: 512
+  synthetic_resource_shift: 1.0
+  synthetic_seed: 0
+  max_missing_fraction: 0.0

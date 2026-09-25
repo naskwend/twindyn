@@ -1,0 +1,8 @@
+# Ablation variant, evaluated on the mean external concordance as reported in Table 2.
+experiment: ablation_equal_budget
+variant: equal_budget_default_hyperparameters
+output_dir: runs/ablation_equal_budget
+
+evaluation:
+  initialisations: 10
+  bootstrap_resamples: 1000

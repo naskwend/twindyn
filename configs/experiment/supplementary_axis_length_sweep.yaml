@@ -1,0 +1,10 @@
+# supplementary_axis_length_sweep
+# Trajectory length swept over 4/8/16/32 around the selected 16 (Table 4).
+experiment: supplementary_axis_length_sweep
+variant: full
+output_dir: runs/supplementary_axis_length_sweep
+
+axis:
+  tau_max: 16
+evaluation:
+  initialisations: 10

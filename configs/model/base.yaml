@@ -1,0 +1,14 @@
+# Model geometry.
+# tau_max lives in configs/data/base.yaml; state_dim carries the value the manuscript selects (Table 4).
+model:
+  state_dim: 64
+  msi_hidden: 256
+  msi_layers: 1
+  msi_dropout: 0.0
+  complex_state: true
+  discretisation: exponential_trapezoidal
+  selective: true
+  mimo: true
+  readout_depth: 1
+  readout_hidden: 64
+  pooling: trajectory_mean

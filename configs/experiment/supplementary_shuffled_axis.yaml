@@ -1,0 +1,12 @@
+# supplementary_shuffled_axis
+# The ordered axis is permuted before training, which destroys the ordering the operator depends on (Table 4).
+experiment: supplementary_shuffled_axis
+variant: full
+output_dir: runs/supplementary_shuffled_axis
+
+axis:
+  tau_max: 16
+  ordering_rule: shuffled
+  shuffle_positions: true
+evaluation:
+  initialisations: 10

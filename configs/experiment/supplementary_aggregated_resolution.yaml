@@ -1,0 +1,11 @@
+# supplementary_aggregated_resolution
+# Compartments aggregated to a coarser resolution, the row that costs 0.019 in Table 3.
+experiment: supplementary_aggregated_resolution
+variant: full
+output_dir: runs/supplementary_aggregated_resolution
+
+axis:
+  tau_max: 16
+  aggregation_level: 1
+evaluation:
+  initialisations: 10
